@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>IComparable の実装 (参照型)</Title>
+      <Description>参照型の IComparable を実装し、比較演算子をオーバーロードします。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>icomparable</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>className</ID>
+          <ToolTip>クラス名</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>Class</Default>
+        </Literal>
+        <Literal>
+          <ID>implementation</ID>
+          <ToolTip>CompareTo() の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// 2つの<see cref="$className$"/>を比較します。
+        /// </summary>
+        /// <param name="left">1つめの<see cref="$className$"/>。</param>
+        /// <param name="right">2つめの<see cref="$className$"/>。</param>
+        /// <returns><paramref name="left"/>より<paramref name="right"/>が大きい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public static bool operator <($className$ left, $className$ right)
+        {
+            if (left == null)
+            {
+                throw new ArgumentNullException("left");
+            }
+
+            return left.CompareTo(right) < 0;
+        }
+
+        /// <summary>
+        /// 2つの<see cref="$className$"/>を比較します。
+        /// </summary>
+        /// <param name="left">1つめの<see cref="$className$"/>。</param>
+        /// <param name="right">2つめの<see cref="$className$"/>。</param>
+        /// <returns><paramref name="left"/>より<paramref name="right"/>が小さい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public static bool operator >($className$ left, $className$ right)
+        {
+            return right < left;
+        }
+
+        /// <summary>
+        /// 2つの<see cref="$className$"/>を比較します。
+        /// </summary>
+        /// <param name="left">1つめの<see cref="$className$"/>。</param>
+        /// <param name="right">2つめの<see cref="$className$"/>。</param>
+        /// <returns><paramref name="left"/>より<paramref name="right"/>が大きい、または等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public static bool operator <=($className$ left, $className$ right)
+        {
+            if (left == null)
+            {
+                throw new ArgumentNullException("left");
+            }
+
+            return left.CompareTo(right) <= 0;
+        }
+
+        /// <summary>
+        /// 2つの<see cref="$className$"/>を比較します。
+        /// </summary>
+        /// <param name="left">1つめの<see cref="$className$"/>。</param>
+        /// <param name="right">2つめの<see cref="$className$"/>。</param>
+        /// <returns><paramref name="left"/>より<paramref name="right"/>が小さい、または等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public static bool operator >=($className$ left, $className$ right)
+        {
+            return right <= left;
+        }
+
+        /// <summary>
+        /// 現在のオブジェクトを同じ型の別のオブジェクトと比較します。
+        /// </summary>
+        /// <param name="other">このオブジェクトと比較するオブジェクト。</param>
+        /// <returns>
+        /// 比較対象オブジェクトの相対順序を示す値。
+        /// <list type="table">
+        ///		<listheader><term>値</term><description>説明</description></listheader>
+        ///		<item><term>0より小さい値</term><description>このオブジェクトは<paramref name="other"/>より小さいことを示します。</description></item>
+        ///		<item><term>0</term><description>このオブジェクトは<paramref name="other"/>と等しいことを示します。</description></item>
+        ///		<item><term>0より大きい値</term><description>このオブジェクトは<paramref name="other"/>より大きいことを示します。</description></item>
+        /// </list>
+        /// </returns>
+        public int CompareTo($className$ other)
+        {
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+
+            // TODO : Write your implementation of CompareTo() here
+            $implementation$
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>イベントハンドラーの追加と即時削除</Title>
+      <Description>作成したイベントハンドラーの追加と、即時削除を行います。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>addjustrmevent</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>eventType</ID>
+          <ToolTip>イベントハンドラーの型</ToolTip>
+          <Default>EventHandler</Default>
+        </Literal>
+        <Literal>
+          <ID>eventName</ID>
+          <ToolTip>イベントハンドラー名</ToolTip>
+          <Default>handler</Default>
+        </Literal>
+        <Literal>
+          <ID>AddEvent</ID>
+          <ToolTip>追加対象のイベント</ToolTip>
+          <Default>AddEvent</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[
+        $eventType$ $eventName$ = null;
+        $eventName$ += (sender, e) =>
+        {
+            $AddEvent$ -= $eventName$;
+        };
+
+        $AddEvent$ += $eventName$;
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

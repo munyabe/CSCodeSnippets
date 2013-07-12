@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>添付イベント</Title>
+      <Description>添付イベントを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>eventattach</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>eventName</ID>
+          <ToolTip>イベント名</ToolTip>
+          <Default>EventName</Default>
+        </Literal>
+        <Literal>
+          <ID>targetClass</ID>
+          <ToolTip>イベントの所有者クラス</ToolTip>
+          <Function>ClassName()</Function>
+        </Literal>
+        <Literal>
+          <ID>strategy</ID>
+          <ToolTip>ルーティング方法</ToolTip>
+          <Default>RoutingStrategy.Bubble</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// <c>$eventName$</c>添付イベントを識別します。
+        /// </summary>
+        public static readonly RoutedEvent $eventName$Event = EventManager.RegisterRoutedEvent(
+            "$eventName$",
+            $strategy$,
+            typeof(RoutedEventHandler),
+            typeof($targetClass$));
+
+        public static void Add$eventName$Handler(DependencyObject obj, RoutedEventHandler handler)
+        {
+            UIElement element = obj as UIElement;
+            if (element != null)
+            {
+                element.AddHandler($eventName$Event, handler);
+            }
+        }
+
+        public static void Remove$eventName$Handler(DependencyObject obj, RoutedEventHandler handler)
+        {
+            UIElement element = obj as UIElement;
+            if (element != null)
+            {
+                element.RemoveHandler($eventName$Event, handler);
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

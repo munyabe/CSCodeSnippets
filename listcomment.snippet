@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>XMLコメント(list)</Title>
+      <Description>XMLコメントにリスト型で記述します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>listcomment</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>listType</ID>
+          <ToolTip>
+            リストのタイプ
+            bullet, number, table の何れかを指定します。
+          </ToolTip>
+          <Default>bullet</Default>
+        </Literal>
+        <Literal>
+          <ID>header</ID>
+          <ToolTip>リストの見出し</ToolTip>
+        </Literal>
+        <Literal>
+          <ID>firstItem</ID>
+          <ToolTip>リストの最初の項目</ToolTip>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="any">
+        <![CDATA[/// <para>
+        /// <list type="$listType$">
+        ///     <listheader>$header$</listheader>
+        ///     <item>$firstItem$</item>
+        /// </list>
+        /// </para>]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

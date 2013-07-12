@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>IComparer の実装 (参照型)</Title>
+      <Description>参照型の IComparer のメソッド Compare(T x, T y) を実装します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>icomparer</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>className</ID>
+          <ToolTip>IComparable インターフェイスを実装しているクラス名</ToolTip>
+          <Default>Class</Default>
+        </Literal>
+        <Literal>
+          <ID>implementation</ID>
+          <ToolTip>CompareTo() の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// 2 つのオブジェクトを比較し、一方が他方より小さいか、等しいか、大きいかを示す値を返します。
+        /// </summary>
+        /// <param name="x">比較する最初のオブジェクト。</param>
+        /// <param name="y">比較する 2 番目のオブジェクト。</param>
+        /// <returns>
+        /// x と y の相対的な値を示す符号付き整数。
+        /// <list type="table">
+        ///		<listheader><term>値</term><description>説明</description></listheader>
+        ///		<item><term>0より小さい値</term><description><paramref name="x"/>が<paramref name="y"/>より小さい。</description></item>
+        ///		<item><term>0</term><description><paramref name="x"/>と<paramref name="y"/>は等しい。</description></item>
+        ///		<item><term>0より大きい値</term><description><paramref name="x"/>が<paramref name="y"/>より大きい。</description></item>
+        /// </list>
+        /// </returns>
+        public int Compare($className$ x, $className$ y)
+        {
+            if (x == null)
+            {
+                return y == null ? 0 : -1;
+            }
+            else if (y == null)
+            {
+                return 1;
+            }
+
+            // TODO : Write your implementation of Compare() here
+            $implementation$
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

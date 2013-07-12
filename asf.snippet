@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Assert.IsFalse</Title>
+      <Description>指定された条件が false であることを検証します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>asf</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>condition</ID>
+          <ToolTip>検証する条件</ToolTip>
+          <Default>condition</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="any">
+        <![CDATA[Assert.IsFalse($condition$);]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

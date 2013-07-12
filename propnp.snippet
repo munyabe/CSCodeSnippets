@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>NotifyPropertyChangedEvenを発行するプロパティ</Title>
+      <Description>INotifyPropertyChangedを実装するクラスのプロパティを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>propnp</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>propertyName</ID>
+          <ToolTip>プロパティ名</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+        <Literal>
+          <ID>field</ID>
+          <ToolTip>このプロパティのバッキング変数</ToolTip>
+          <Default>myVar</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[private $type$ $field$;
+
+          public $type$ $propertyName$
+          {
+              get { return $field$; }
+              set
+              {
+                  if ($field$ != value)
+                  {
+                      $field$ = value;
+                      OnPropertyChanged(() => $propertyName$);
+                  }
+              }
+          }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

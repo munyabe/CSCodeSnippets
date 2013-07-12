@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>列挙体の拡張メソッドパターン</Title>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>exenum</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>enumName</ID>
+          <ToolTip>拡張対象の列挙体名</ToolTip>
+          <Default>EnumName</Default>
+        </Literal>
+        <Literal>
+          <ID>returnType</ID>
+          <ToolTip>拡張メソッドの戻り値のとなるプロパティの型</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>propertyName</ID>
+          <ToolTip>拡張メソッドの戻り値のとなるプロパティ名</ToolTip>
+          <Default>PropertyName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="type decl">
+        <![CDATA[    /// <summary>
+        /// <see cref="$enumName$"/>の拡張メソッドを定義するクラスです。
+        /// </summary>
+        public static class $enumName$Extensions
+        {
+            private class $enumName$Info
+            {
+                public $returnType$ $propertyName$ { get; private set; }
+
+                public $enumName$Info($returnType$ property)
+                {
+                    $propertyName$ = property;
+                }
+            }
+
+            private static Dictionary<$enumName$, $enumName$Info> _infoes = new Dictionary<$enumName$, $enumName$Info>();
+
+            static $enumName$Extensions()
+            {
+                // TODO : Write your implementation
+                // _infoes.Add($enumName$., new $enumName$Info());
+            }
+
+            public static $returnType$ Get$propertyName$(this $enumName$ source)
+            {
+                return GetInfo(source).$propertyName$;
+            }
+
+            private static $enumName$Info GetInfo($enumName$ source)
+            {
+                $enumName$Info info;
+                if (_infoes.TryGetValue(source, out info) && info != null)
+                {
+                    return info;
+                }
+                else
+                {
+                    throw new InvalidOperationException(string.Format("[{0}] is not supported.", source));
+                }
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

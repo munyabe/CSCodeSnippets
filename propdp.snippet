@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>依存関係プロパティ</Title>
+      <Description>依存関係プロパティを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>propdp</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>property</ID>
+          <ToolTip>プロパティ名</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+        <Literal>
+          <ID>ownerClass</ID>
+          <ToolTip>このプロパティを所有するクラス</ToolTip>
+          <Function>ClassName()</Function>
+        </Literal>
+        <Literal>
+          <ID>propertyComment</ID>
+          <ToolTip>プロパティのコメント</ToolTip>
+          <Default>プロパティ</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// <see cref="$property$"/>依存関係プロパティを識別します。
+        /// </summary>
+        public static readonly DependencyProperty $property$Property = DependencyProperty.Register(
+            "$property$",
+            typeof($type$),
+            typeof($ownerClass$));
+
+        /// <summary>
+        /// $propertyComment$を取得または設定します。
+        /// </summary>
+        public $type$ $property$
+        {
+            get { return ($type$)GetValue($property$Property); }
+            set { SetValue($property$Property, value); }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

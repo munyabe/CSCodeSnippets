@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>region ブロック</Title>
+      <Description>選択中のコードを region ブロックで囲みます</Description>
+      <SnippetTypes>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+      <Shortcut>region</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>comment</ID>
+          <ToolTip>region ブロックのコメント</ToolTip>
+          <Default>プロパティ</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="any">
+        <![CDATA[#region $comment$
+        
+        $selected$
+        
+        #endregion$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

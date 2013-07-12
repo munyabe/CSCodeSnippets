@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>カスタム例外</Title>
+      <Description>カスタム例外を作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>exception</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>例外の名前</ToolTip>
+          <Default>My</Default>
+        </Literal>
+        <Literal>
+          <ID>baseException</ID>
+          <ToolTip>基底の例外</ToolTip>
+          <Default>Exception</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="type decl">
+        <![CDATA[[Serializable]
+        public class $name$Exception : $baseException$
+        {
+            /// <summary>
+            /// <see cref="$name$Exception"/> クラスの新しいインスタンスを初期化します。
+            /// </summary>
+            public $name$Exception()
+            {
+            }
+
+            /// <summary>
+            /// <see cref="$name$Exception"/> クラスの新しいインスタンスを初期化します。
+            /// </summary>
+            /// <param name="message">この例外の原因を説明するエラーメッセージ</param>
+            public $name$Exception(string message)
+                : base(message)
+            {
+            }
+
+            /// <summary>
+            /// <see cref="$name$Exception"/> クラスの新しいインスタンスを初期化します。
+            /// </summary>
+            /// <param name="message">この例外の原因を説明するエラーメッセージ</param>
+            /// <param name="innerException">現在の例外の原因である例外</param>
+            public $name$Exception(string message, Exception innerException)
+                : base(message, innerException)
+            {
+            }
+
+            /// <summary>
+            /// シリアル化したデータを使用して、<see cref="$name$Exception"/> クラスの新しいインスタンスを初期化します。
+            /// </summary>
+            /// <param name="info">シリアル化されたオブジェクトデータを保持するオブジェクト</param>
+            /// <param name="context">転送元または転送先に関するコンテキスト情報</param>
+            protected $name$Exception(SerializationInfo info, StreamingContext context)
+                : base(info, context)
+            {
+            }
+            }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

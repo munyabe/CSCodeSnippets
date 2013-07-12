@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>イベントハンドラー(パラメータなし)</Title>
+      <Description>イベントの定義と発生するメソッドを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>event</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>eventName</ID>
+          <ToolTip>イベントハンドラーの名前</ToolTip>
+          <Default>Event</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[public event EventHandler $eventName$;
+
+        /// <summary>
+        /// <see cref="$eventName$"/>イベントを発生させます。
+        /// </summary>
+        protected virtual void On$eventName$()
+        {
+            var handler = $eventName$;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

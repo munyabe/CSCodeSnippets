@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>シングルトンのインスタンス</Title>
+      <Description>シングルトンのインスタンスとコンストラクタを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>singleton</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>className</ID>
+          <ToolTip>拡張対象のクラス名</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>ClassName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="type decl">
+        <![CDATA[        /// <summary>
+        /// シングルトンのインスタンスです。
+        /// </summary>
+        public static readonly $className$ Instance = new $className$();
+
+        /// <summary>
+        /// インスタンスを初期化します。
+        /// </summary>
+        private $className$()
+        {
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

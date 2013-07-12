@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>読み取り専用の存関係プロパティ</Title>
+      <Description>読み取り専用の依存関係プロパティを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>proprdp</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>property</ID>
+          <ToolTip>プロパティ名</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+        <Literal>
+          <ID>ownerClass</ID>
+          <ToolTip>このプロパティを所有するクラス</ToolTip>
+          <Function>ClassName()</Function>
+        </Literal>
+        <Literal>
+          <ID>defaultValue</ID>
+          <ToolTip>プロパティのデフォルト値</ToolTip>
+        </Literal>
+        <Literal>
+          <ID>propertyComment</ID>
+          <ToolTip>プロパティのコメント</ToolTip>
+          <Default>プロパティ</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// <c>$property$</c>依存関係プロパティを識別するキーです。
+        /// </summary>
+        private static readonly DependencyPropertyKey _$property$PropertyKey = DependencyProperty.RegisterReadOnly(
+            "$property$",
+            typeof($type$),
+            typeof($ownerClass$),
+            new PropertyMetadata($defaultValue$));
+        
+        /// <summary>
+        /// <see cref="$property$"/>依存関係プロパティを識別します。このプロパティは読み取り専用です。
+        /// </summary>
+        public static readonly DependencyProperty $property$Property = _$property$PropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// $propertyComment$を取得します。
+        /// </summary>
+        public $type$ $property$
+        {
+            get { return ($type$)GetValue($property$Property); }
+            private set { SetValue(_$property$PropertyKey, value); }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

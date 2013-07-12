@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Assert.AreEqual</Title>
+      <Description>指定された 2 つのオブジェクトが同一であることを検証します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>ase</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>expected</ID>
+          <ToolTip>予測するオブジェクト</ToolTip>
+          <Default>expected</Default>
+        </Literal>
+        <Literal>
+          <ID>actual</ID>
+          <ToolTip>生成したオブジェクト</ToolTip>
+          <Default>actual</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="any">
+        <![CDATA[Assert.AreEqual($expected$, $actual$);]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

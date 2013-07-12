@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>遅延初期化を行うプロパティ</Title>
+      <Description>遅延初期化を行うプロパティを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>propll</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>propertyType</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>propertyName</ID>
+          <ToolTip>プロパティ名</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+        <Literal>
+          <ID>field</ID>
+          <ToolTip>このプロパティのバッキング変数</ToolTip>
+          <Default>myVar</Default>
+        </Literal>
+        <Literal>
+          <ID>implementation</ID>
+          <ToolTip>プロパティの初期化処理</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[private $propertyType$ $field$;
+
+        public $propertyType$ $propertyName$
+        {
+            get
+            {
+                if ($field$ == null)
+                {
+                    $implementation$
+                }
+                return $field$;
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

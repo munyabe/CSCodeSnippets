@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>処理時間を計測する Stopwatch</Title>
+      <Description>Stopwatch によって処理時間を計測します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>stopwatch</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>contents</ID>
+          <ToolTip>計測する処理</ToolTip>
+          <Default>Contents</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="any">
+        <![CDATA[var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            $contents$
+            stopwatch.Stop();
+            var ms = stopwatch.ElapsedMilliseconds;]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>添付プロパティ</Title>
+      <Description>添付プロパティを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>propa</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>property</ID>
+          <ToolTip>プロパティ名</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+        <Literal>
+          <ID>targetClass</ID>
+          <ToolTip>アタッチする対象のクラス</ToolTip>
+          <Default>DependencyObject</Default>
+        </Literal>
+        <Literal>
+          <ID>propertyComment</ID>
+          <ToolTip>プロパティのコメント</ToolTip>
+          <Default>プロパティ</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// <c>$property$</c>添付プロパティを識別します。
+        /// </summary>
+        public static readonly DependencyProperty $property$Property = DependencyProperty.RegisterAttached(
+            "$property$",
+            typeof($type$),
+            typeof($targetClass$));
+
+        /// <summary>
+        /// $propertyComment$を取得します。
+        /// </summary>
+        public static $type$ Get$property$($targetClass$ obj)
+        {
+            return ($type$)obj.GetValue($property$Property);
+        }
+
+        /// <summary>
+        /// $propertyComment$を設定します。
+        /// </summary>
+        public static void Set$property$($targetClass$ obj, $type$ value)
+        {
+            obj.SetValue($property$Property, value);
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

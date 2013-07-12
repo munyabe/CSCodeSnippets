@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>IEquatableの実装</Title>
+      <Description>IEquatableを実装し、等値・非等値演算子をオーバーロードします。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>iequatable</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>className</ID>
+          <ToolTip>クラス名</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>Class</Default>
+        </Literal>
+        <Literal>
+          <ID>implementationEquals</ID>
+          <ToolTip>Equals() の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+        <Literal>
+          <ID>implementationGetHashCode</ID>
+          <ToolTip>GetHashCode() の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// 2つの<see cref="$className$"/>を比較して、等しいかどうかを判定します。
+        /// </summary>
+        /// <param name="left">1つめの<see cref="$className$"/>。</param>
+        /// <param name="y">2つめの<see cref="$className$"/>。</param>
+        /// <returns>2つの<see cref="$className$"/>が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public static bool operator ==($className$ left, $className$ right)
+        {
+            if (left == right)
+            {
+                return true;
+            }
+            if (left == null)
+            {
+                return right == null;
+            }
+
+            return left.Equals(right);
+        }
+
+        /// <summary>
+        /// 2つの<see cref="$className$"/>を比較して、等しくないかどうかを判定します。
+        /// </summary>
+        /// <param name="left">1つめの<see cref="$className$"/>。</param>
+        /// <param name="right">2つめの<see cref="$className$"/>。</param>
+        /// <returns>2つの<see cref="$className$"/>が等しくない場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public static bool operator !=($className$ left, $className$ right)
+        {
+            return (left == right) == false;
+        }
+
+        /// <summary>
+        /// 指定した<see cref="$className$"/>の値が、現在の<see cref="$className$"/>と等しいかどうかを判定します。
+        /// </summary>
+        /// <param name="obj">現在の<see cref="$className$"/>と比較する<see cref="$className$"/>。</param>
+        /// <returns><paramref name="obj"/>と現在の<see cref="$className$"/>が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as $className$);
+        }
+
+        /// <summary>
+        /// 指定した<see cref="$className$"/>の値が、現在の<see cref="$className$"/>と等しいかどうかを判定します。
+        /// </summary>
+        /// <param name="other">現在の<see cref="$className$"/>と比較する<see cref="$className$"/>。</param>
+        /// <returns><paramref name="other"/>と現在の<see cref="$className$"/>が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        public bool Equals($className$ other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (other == this)
+            {
+                return true;
+            }
+
+            // TODO : Write your implementation of Equals() here
+            $implementationEquals$
+        }
+
+        /// <summary>
+        /// このインスタンスのハッシュコードを取得します。
+        /// </summary>
+        /// <returns>32ビット符号付き整数ハッシュコード。</returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                // TODO : Write your implementation of GetHashCode() here
+                // ex)
+                // var result = _field1.GetHashCode();
+                // result = (result * 397) ^ _field2.GetHashCode();
+                // result = (result * 397) ^ _field3.GetHashCode();
+                // return result;
+                $implementationGetHashCode$
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

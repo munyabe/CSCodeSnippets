@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>拡張メソッドを定義するクラス</Title>
+      <Description>拡張メソッドを定義するクラスを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>exmclass</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>className</ID>
+          <ToolTip>拡張対象のクラス名</ToolTip>
+          <Default>ClassName</Default>
+        </Literal>
+        <Literal>
+          <ID>returnType</ID>
+          <ToolTip>拡張メソッドの戻り値の型</ToolTip>
+          <Default>void</Default>
+        </Literal>
+        <Literal>
+          <ID>methodName</ID>
+          <ToolTip>拡張メソッド名</ToolTip>
+          <Default>MethodName</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="type decl">
+        <![CDATA[    /// <summary>
+        /// <see cref="$className$"/>の拡張メソッドを定義するクラスです。
+        /// </summary>
+        public static class $className$Extensions
+        {
+            public static $returnType$ $methodName$(this $className$ source)
+            {
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

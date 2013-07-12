@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>GetHashCode の実装</Title>
+      <Description>GetHashCode を実装します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>hashcode</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>implementation</ID>
+          <ToolTip>GetHashCode の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// このインスタンスのハッシュコードを取得します。
+        /// </summary>
+        /// <returns>32ビット符号付き整数ハッシュコード。</returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                // TODO : Write your implementation of GetHashCode() here.
+                // ex)
+                // var result = _field1.GetHashCode();
+                // result = (result * 397) ^ _field2.GetHashCode();
+                // result = (result * 397) ^ _field3.GetHashCode();
+                // return result;
+                $implementation$
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>NotSupportedException</Title>
+      <Description>NotSupportedExceptionをスローします。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>nsexception</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>item</ID>
+          <ToolTip>サポートしないアイテムの説明</ToolTip>
+          <Default>This item</Default>
+        </Literal>
+        <Literal>
+          <ID>variable</ID>
+          <ToolTip>サポートしないアイテムの変数</ToolTip>
+          <Default>item</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method body">
+        <![CDATA[throw new NotSupportedException(
+                        string.Format("$item$ [{0}] is not supported", $variable$));]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

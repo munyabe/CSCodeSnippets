@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>読み取り専用の添付プロパティ</Title>
+      <Description>読み取りの添付プロパティを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>propra</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>プロパティの型</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>property</ID>
+          <ToolTip>プロパティ名</ToolTip>
+          <Default>MyProperty</Default>
+        </Literal>
+        <Literal>
+          <ID>targetClass</ID>
+          <ToolTip>アタッチする対象のクラス</ToolTip>
+          <Default>DependencyObject</Default>
+        </Literal>
+        <Literal>
+          <ID>defaultValue</ID>
+          <ToolTip>プロパティのデフォルト値</ToolTip>
+        </Literal>
+        <Literal>
+          <ID>propertyComment</ID>
+          <ToolTip>プロパティのコメント</ToolTip>
+          <Default>プロパティ</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// <c>$property$</c>添付プロパティを識別するキーです。
+        /// </summary>
+        private static readonly DependencyPropertyKey _$property$PropertyKey = DependencyProperty.RegisterAttachedReadOnly(
+            "$property$",
+            typeof($type$),
+            typeof($targetClass$),
+            new PropertyMetadata($defaultValue$));
+            
+        /// <summary>
+        /// <c>$property$</c>添付プロパティを識別します。このプロパティは読み取り専用です。
+        /// </summary>
+        public static readonly DependencyProperty $property$Property = _$property$PropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// $propertyComment$を取得します。
+        /// </summary>
+        public static $type$ Get$property$($targetClass$ obj)
+        {
+            return ($type$)obj.GetValue($property$Property);
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
