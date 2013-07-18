@@ -2,20 +2,20 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>OnDeserialized のメソッド</Title>
-      <Description>オブジェクトの逆シリアル化後に呼び出されるメソッドを作成します。</Description>
+      <Title>OnSerializing のメソッド</Title>
+      <Description>オブジェクトのシリアル化時に呼び出されるメソッドを作成します。</Description>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Shortcut>ondesed</Shortcut>
+      <Shortcut>onsering</Shortcut>
     </Header>
     <Snippet>
       <Code Language="csharp" Kind="method decl">
         <![CDATA[        /// <summary>
-        /// オブジェクトの逆シリアル化後に呼び出される処理です。
+        /// オブジェクトのシリアル化時に呼び出される処理です。
         /// </summary>
-        [OnDeserialized]
-        internal void OnDeserialized(StreamingContext context)
+        [OnSerializing]
+        internal void OnSerializing(StreamingContext context)
         {
         }]]>
       </Code>
