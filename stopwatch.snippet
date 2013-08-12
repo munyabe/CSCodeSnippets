@@ -2,8 +2,8 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>処理時間を計測する Stopwatch</Title>
-      <Description>Stopwatch によって処理時間を計測します。</Description>
+      <Title>処理時間を計測するコード</Title>
+      <Description>Stopwatch によって処理時間を計測するコードを作成します。</Description>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
@@ -14,10 +14,10 @@
         <Literal>
           <ID>contents</ID>
           <ToolTip>計測する処理</ToolTip>
-          <Default>Contents</Default>
+          <Default>// TODO : Contents</Default>
         </Literal>
       </Declarations>
-      <Code Language="csharp" Kind="any">
+      <Code Language="csharp" Kind="method body">
         <![CDATA[var stopwatch = new Stopwatch();
             stopwatch.Start();
             $contents$
