@@ -11,6 +11,10 @@
     </Header>
     <Snippet>
       <Declarations>
+        <Literal Editable="false">
+          <ID>thread</ID>
+          <Function>SimpleTypeName(global::System.Threading.Thread)</Function> 
+        </Literal>
         <Literal>
           <ID>time</ID>
           <ToolTip>スレッドがブロックされるミリ秒数</ToolTip>
@@ -18,7 +22,7 @@
         </Literal>
       </Declarations>
       <Code Language="csharp" Kind="method body">
-        <![CDATA[Thread.Sleep($time$);]]>
+        <![CDATA[$thread$.Sleep($time$);]]>
       </Code>
     </Snippet>
   </CodeSnippet>

@@ -34,7 +34,7 @@
         /// </summary>
         /// <param name="left">1つめの<see cref="$className$"/>。</param>
         /// <param name="y">2つめの<see cref="$className$"/>。</param>
-        /// <returns>2つの<see cref="$className$"/>が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        /// <returns>2つの<see cref="$className$"/>が等しい場合は<see langword="true"/>。それ以外の場合は<see langword="false"/>。</returns>
         public static bool operator ==($className$ left, $className$ right)
         {
             if (left == right)
@@ -54,7 +54,7 @@
         /// </summary>
         /// <param name="left">1つめの<see cref="$className$"/>。</param>
         /// <param name="right">2つめの<see cref="$className$"/>。</param>
-        /// <returns>2つの<see cref="$className$"/>が等しくない場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        /// <returns>2つの<see cref="$className$"/>が等しくない場合は<see langword="true"/>。それ以外の場合は<see langword="false"/>。</returns>
         public static bool operator !=($className$ left, $className$ right)
         {
             return (left == right) == false;
@@ -64,7 +64,7 @@
         /// 指定した<see cref="$className$"/>の値が、現在の<see cref="$className$"/>と等しいかどうかを判定します。
         /// </summary>
         /// <param name="obj">現在の<see cref="$className$"/>と比較する<see cref="$className$"/>。</param>
-        /// <returns><paramref name="obj"/>と現在の<see cref="$className$"/>が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        /// <returns><paramref name="obj"/>と現在の<see cref="$className$"/>が等しい場合は<see langword="true"/>。それ以外の場合は<see langword="false"/>。</returns>
         public override bool Equals(object obj)
         {
             return Equals(obj as $className$);
@@ -74,14 +74,14 @@
         /// 指定した<see cref="$className$"/>の値が、現在の<see cref="$className$"/>と等しいかどうかを判定します。
         /// </summary>
         /// <param name="other">現在の<see cref="$className$"/>と比較する<see cref="$className$"/>。</param>
-        /// <returns><paramref name="other"/>と現在の<see cref="$className$"/>が等しい場合は<c>true</c>。それ以外の場合は<c>false</c>。</returns>
+        /// <returns><paramref name="other"/>と現在の<see cref="$className$"/>が等しい場合は<see langword="true"/>。それ以外の場合は<see langword="false"/>。</returns>
         public bool Equals($className$ other)
         {
             if (other == null)
             {
                 return false;
             }
-            if (other == this)
+            if (object.ReferenceEquals(this, other))
             {
                 return true;
             }
