@@ -2,8 +2,8 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>IDisposableの実装</Title>
-      <Description>IDisposableを実装します。</Description>
+      <Title>dispose パターンの実装</Title>
+      <Description>try/finally ブロックでインスタンスを破棄します。</Description>
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
@@ -11,63 +11,30 @@
     </Header>
     <Snippet>
       <Declarations>
-        <Literal Editable="false">
-          <ID>className</ID>
-          <ToolTip>クラス名</ToolTip>
-          <Function>ClassName()</Function>
-          <Default>Class</Default>
+        <Literal>
+          <ID>targetType</ID>
+          <ToolTip>破棄が必要なインスタンスの型</ToolTip>
+          <Default>Type</Default>
         </Literal>
         <Literal>
-          <ID>implementationManagedDispose</ID>
-          <ToolTip>マネージリソースを解放する処理</ToolTip>
-          <Default>throw new NotImplementedException();</Default>
-        </Literal>
-        <Literal>
-          <ID>implementationUnmanagedDispose</ID>
-          <ToolTip>アンマネージリソースを解放する処理</ToolTip>
-          <Default>throw new NotImplementedException();</Default>
+          <ID>target</ID>
+          <ToolTip>破棄が必要なインスタンス</ToolTip>
+          <Default>target</Default>
         </Literal>
       </Declarations>
-      <Code Language="csharp" Kind="method decl">
-        <![CDATA[/// <summary>
-        /// すでに破棄済みかどうかを表します。
-        /// </summary>
-        private bool _disposed = false;
-
-        /// <summary>
-        /// <see cref="$className$"/>によって使用されているすべてのリソースを解放します。
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// <see cref="$className$"/>によって使用されているアンマネージリソースを解放し、オプションでマネージリソースも解放します。
-        /// </summary>
-        /// <param name="disposing">
-        /// マネージリソースとアンマネージリソースの両方を解放する場合は<see langword="true"/>。
-        /// アンマネージリソースだけを解放する場合は<see langword="false"/>。
-        /// </param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed)
+      <Code Language="csharp" Kind="method body">
+        <![CDATA[$targetType$ $target$ = null;
+            try
             {
-                return;
+                // TODO : Create instance.
             }
-
-            if (disposing)
+            finally
             {
-                // TODO : Free other state (managed objects).
-                $implementationManagedDispose$
-            }
-
-            // TODO : Free your own state (unmanaged objects). Set large fields to null.
-            $implementationUnmanagedDispose$
-
-            _disposed = true;
-        }]]>
+                if ($target$ != null)
+                {
+                    $target$.Dispose();
+                }
+            }]]>
       </Code>
     </Snippet>
   </CodeSnippet>
