@@ -12,34 +12,50 @@
     <Snippet>
       <Declarations>
         <Literal>
-          <ID>eventType</ID>
-          <ToolTip>イベントハンドラーの型</ToolTip>
+          <ID>addEventType</ID>
+          <ToolTip>購読するイベントハンドラーの型</ToolTip>
           <Default>EventHandler</Default>
         </Literal>
         <Literal>
-          <ID>eventName</ID>
-          <ToolTip>イベントハンドラー名</ToolTip>
-          <Default>handler</Default>
+          <ID>addHandlerName</ID>
+          <ToolTip>購読するイベントハンドラー名</ToolTip>
+          <Default>addHandler</Default>
         </Literal>
         <Literal>
-          <ID>AddEvent</ID>
-          <ToolTip>追加対象のイベント</ToolTip>
+          <ID>addEvent</ID>
+          <ToolTip>購読するイベント</ToolTip>
           <Default>AddEvent</Default>
         </Literal>
         <Literal>
-          <ID>DisposingEvent</ID>
-          <ToolTip>削除対象のイベント</ToolTip>
-          <Default>DisposingEvent</Default>
+          <ID>untilEventType</ID>
+          <ToolTip>イベントの購読を解除するイベントハンドラーの型</ToolTip>
+          <Default>EventHandler</Default>
+        </Literal>
+        <Literal>
+          <ID>untilHandlerName</ID>
+          <ToolTip>イベントの購読を解除するイベントハンドラー名</ToolTip>
+          <Default>untilHandler</Default>
+        </Literal>
+        <Literal>
+          <ID>untilEvent</ID>
+          <ToolTip>イベントの購読を解除するイベント</ToolTip>
+          <Default>UntilEvent</Default>
         </Literal>
       </Declarations>
       <Code Language="csharp" Kind="method body">
         <![CDATA[
-        $eventType$ $eventName$ = (sender, e) =>
+        $addEventType$ $addHandlerName$ = (sender, e) =>
         {
         };
-
-        $AddEvent$ += $eventName$;
-        $DisposingEvent$ += (sender, e) => $AddEvent$ -= $eventName$;
+        $addEvent$ += $addHandlerName$;
+        
+        $untilEventType$ $untilHandlerName$ = null;
+        $untilHandlerName$ += (sender, e) => 
+        {
+            $untilEvent$ -= $untilHandlerName$;
+            $addEvent$ -= $addHandlerName$;
+        };
+        $untilEvent$ += $untilHandlerName$;
         ]]>
       </Code>
     </Snippet>
