@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ルーティングイベント</Title>
+      <Description>WPF のイベントシステムに登録するルーティングイベントを作成します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>revent</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>eventName</ID>
+          <ToolTip>イベント名</ToolTip>
+          <Default>EventName</Default>
+        </Literal>
+        <Literal>
+          <ID>class</ID>
+          <ToolTip>追加するクラス</ToolTip>
+          <Function>ClassName()</Function>
+        </Literal>
+        <Literal>
+          <ID>eventComment</ID>
+          <ToolTip>イベントのコメント</ToolTip>
+          <Default>イベントが発生します。</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// <see cref="$eventName$"/>ルーティングイベントを識別します。
+        /// </summary>
+        public static readonly RoutedEvent $eventName$Event = EventManager.RegisterRoutedEvent(
+            "$eventName$",
+            RoutingStrategy.Direct,
+            typeof(RoutedEventHandler),
+            typeof($class$));
+
+        /// <summary>
+        /// $eventComment$
+        /// </summary>
+        public event RoutedEventHandler $eventName$
+        {
+            add { AddHandler($eventName$Event, value); }
+            remove { RemoveHandler($eventName$Event, value); }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
