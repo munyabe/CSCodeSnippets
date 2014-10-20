@@ -37,13 +37,13 @@
         /// <returns>2つの<see cref="$className$"/>が等しい場合は<see langword="true"/>。</returns>
         public static bool operator ==($className$ left, $className$ right)
         {
-            if (left == right)
-            {
-                return true;
-            }
             if (left == null)
             {
                 return right == null;
+            }
+            else if (left == right)
+            {
+                return true;
             }
 
             return left.Equals(right);
@@ -81,7 +81,7 @@
             {
                 return false;
             }
-            if (object.ReferenceEquals(this, other))
+            else if (object.ReferenceEquals(this, other))
             {
                 return true;
             }
