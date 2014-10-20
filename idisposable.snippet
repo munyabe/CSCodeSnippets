@@ -35,6 +35,14 @@
         private bool _disposed = false;
 
         /// <summary>
+        /// インスタンスを解放します。
+        /// </summary>
+        ~$className$()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>
         /// <see cref="$className$"/>によって使用されているすべてのリソースを解放します。
         /// </summary>
         public void Dispose()
