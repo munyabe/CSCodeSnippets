@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>値型の実装</Title>
+      <Description>最小限の値型を実装します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>struct</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>typeName</ID>
+          <ToolTip>型名</ToolTip>
+          <Default>TypeName</Default>
+        </Literal>
+        <Literal>
+          <ID>member1Type</ID>
+          <ToolTip>メンバー1の型</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>member1Name</ID>
+          <ToolTip>メンバー1の名前</ToolTip>
+          <Default>MyMember1</Default>
+        </Literal>
+        <Literal>
+          <ID>member1ArgName</ID>
+          <ToolTip>メンバー1を受け取る引数名</ToolTip>
+          <Default>member1</Default>
+        </Literal>
+        <Literal>
+          <ID>member2Type</ID>
+          <ToolTip>メンバー2の型</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>member2Name</ID>
+          <ToolTip>メンバー2の名前</ToolTip>
+          <Default>MyMember2</Default>
+        </Literal>
+        <Literal>
+          <ID>member2ArgName</ID>
+          <ToolTip>メンバー2を受け取る引数名</ToolTip>
+          <Default>member2</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="type decl">
+        <![CDATA[struct $typeName$
+    {
+        public $member1Type$ $member1Name$ { get; private set;}
+        public $member2Type$ $member2Name$ { get; private set;}
+
+        public $typeName$($member1Type$ $member1ArgName$, $member2Type$ $member2ArgName$)
+            : this()
+        {
+            $member1Name$ = $member1ArgName$;
+            $member2Name$ = $member2ArgName$;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (object.ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+            else if (!(obj is $typeName$))
+            {
+                return false;
+            }
+
+            var other = ($typeName$)obj;
+            return $member1Name$ == other.$member1Name$ && $member2Name$ == other.$member2Name$;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var result = $member1Name$.GetHashCode();
+                result = (result * 397) ^ $member2Name$.GetHashCode();
+                return result;
+            }
+        }
+    }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
