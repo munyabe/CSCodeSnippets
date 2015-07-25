@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>IEqualityComparer の実装</Title>
+      <Description>参照型の IEqualityComparer のメソッドを実装します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>iequalitycomparer</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>className</ID>
+          <ToolTip>クラス名</ToolTip>
+          <Default>Class</Default>
+        </Literal>
+        <Literal>
+          <ID>implementationEquals</ID>
+          <ToolTip>Equals() の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+        <Literal>
+          <ID>implementationGetHashCode</ID>
+          <ToolTip>GetHashCode() の実装</ToolTip>
+          <Default>throw new NotImplementedException();</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <inheritdoc />
+        public bool Equals($className$ x, $className$ y)
+        {
+            if (x == null)
+            {
+                return y == null;
+            }
+            else if (y == null)
+            {
+                return false;
+            }
+            else if (object.ReferenceEquals(x, y))
+            {
+                return true;
+            }
+
+            // TODO : Write your implementation of Equals() here
+            $implementationEquals$
+        }
+
+        /// <inheritdoc />
+        public int GetHashCode($className$ obj)
+        {
+            unchecked
+            {
+                // TODO : Write your implementation of GetHashCode() here
+                // ex)
+                // var result = obj._field1.GetHashCode();
+                // result = (result * 397) ^ obj._field2.GetHashCode();
+                // result = (result * 397) ^ obj._field3.GetHashCode();
+                // return result;
+                $implementationGetHashCode$
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
