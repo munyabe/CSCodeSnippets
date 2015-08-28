@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>INotifyDataErrorInfo の実装</Title>
+      <Description>INotifyDataErrorInfo を実装します。</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>inotifydataerrorinfo</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Kind="method decl">
+        <![CDATA[/// <summary>
+        /// エンティティ全体の検証エラーです。
+        /// </summary>
+        private readonly IDictionary<string, IList<string>> _errors = new Dictionary<string, IList<string>>();
+
+        /// <inheritdoc />
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        /// <inheritdoc />
+        public bool HasErrors
+        {
+            get { return _errors.Count != 0; }
+        }
+
+        /// <inheritdoc />
+        public IEnumerable GetErrors(string propertyName)
+        {
+            if (string.IsNullOrEmpty(propertyName))
+            {
+                return _errors.Values.SelectMany(x => x);
+            }
+
+            IList<string> errorMessages;
+            return _errors.TryGetValue(propertyName, out errorMessages) ? errorMessages : null;
+        }
+
+        /// <summary>
+        /// <see cref="ErrorsChanged"/>イベントを発生させます。
+        /// </summary>
+        /// <param name="propertyName">エラーのあるプロパティ名</param>
+        protected virtual void OnErrorsChanged(string propertyName)
+        {
+            var handler = ErrorsChanged;
+            if (handler != null)
+            {
+                handler(this, new DataErrorsChangedEventArgs(propertyName));
+            }
+        }
+
+        /// <summary>
+        /// 指定のプロパティを検証します。
+        /// </summary>
+        /// <param name="propertyName">検証するプロパティ名</param>
+        /// <param name="value">検証するプロパティの値</param>
+        private void ValidateProperty(string propertyName, object value)
+        {
+            var validationResults = new List<ValidationResult>();
+            if (Validator.TryValidateProperty(value, new ValidationContext(this) { MemberName = propertyName }, validationResults))
+            {
+                if (_errors.Remove(propertyName))
+                {
+                    OnErrorsChanged(propertyName);
+                }
+            }
+            else
+            {
+                _errors[propertyName] = validationResults.Select(x => x.ErrorMessage).ToList();
+                OnErrorsChanged(propertyName);
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
