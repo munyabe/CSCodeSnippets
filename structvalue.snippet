@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2010/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>値型の実装</Title>
+      <Description>IEquatable{T}を実装し、Equals/GetHashCode/演算子をオーバーライドする値型を実装します。
+https://docs.microsoft.com/ja-jp/dotnet/standard/design-guidelines/struct</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Shortcut>structvalue</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>typeName</ID>
+          <ToolTip>型名</ToolTip>
+          <Default>TypeName</Default>
+        </Literal>
+        <Literal>
+          <ID>member1Type</ID>
+          <ToolTip>メンバー1の型</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>member1Name</ID>
+          <ToolTip>メンバー1の名前</ToolTip>
+          <Default>Member1</Default>
+        </Literal>
+        <Literal>
+          <ID>member1Desc</ID>
+          <ToolTip>メンバー1の説明</ToolTip>
+          <Default>Member1</Default>
+        </Literal>
+        <Literal>
+          <ID>member1ArgName</ID>
+          <ToolTip>メンバー1を受け取る引数名</ToolTip>
+          <Default>member1</Default>
+        </Literal>
+        <Literal>
+          <ID>member2Type</ID>
+          <ToolTip>メンバー2の型</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>member2Name</ID>
+          <ToolTip>メンバー2の名前</ToolTip>
+          <Default>Member2</Default>
+        </Literal>
+        <Literal>
+          <ID>member2Desc</ID>
+          <ToolTip>メンバー2の説明</ToolTip>
+          <Default>Member2</Default>
+        </Literal>
+        <Literal>
+          <ID>member2ArgName</ID>
+          <ToolTip>メンバー2を受け取る引数名</ToolTip>
+          <Default>member2</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Kind="type decl">
+        <![CDATA[struct $typeName$ : IEquatable<$typeName$>
+    {
+        /// <summary>
+        /// $member1Desc$を取得します。
+        /// </summary>
+        public $member1Type$ $member1Name$ { get; }
+
+        /// <summary>
+        /// $member2Desc$を取得します。
+        /// </summary>
+        public $member2Type$ $member2Name$ { get; }
+
+        /// <summary>
+        /// インスタンスを初期化します。
+        /// </summary>
+        /// <param name="$member1ArgName$">$member1Desc$</param>
+        /// <param name="$member2ArgName$">$member2Desc$</param>
+        public $typeName$($member1Type$ $member1ArgName$, $member2Type$ $member2ArgName$)
+        {
+            $member1Name$ = $member1ArgName$;
+            $member2Name$ = $member2ArgName$;
+        }
+
+        /// <summary>
+        /// == 比較演算子をオーバーロードします。
+        /// </summary>
+        public static bool operator ==($typeName$ left, $typeName$ right) => left.Equals(right);
+
+        /// <summary>
+        /// != 比較演算子をオーバーロードします。
+        /// </summary>
+        public static bool operator !=($typeName$ left, $typeName$ right) => !(left == right);
+
+        /// <inheritdoc />
+        public override bool Equals(object obj) => obj is $typeName$ unbox && Equals(unbox);
+
+        /// <inheritdoc />
+        public bool Equals($typeName$ other)
+        {
+            return $member1Name$ == other.$member1Name$ &&
+                $member2Name$ == other.$member2Name$;
+        }
+
+        /// <inheritdoc />
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var result = $member1Name$.GetHashCode();
+                result = (result * 397) ^ $member2Name$.GetHashCode();
+                return result;
+            }
+        }
+    }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
