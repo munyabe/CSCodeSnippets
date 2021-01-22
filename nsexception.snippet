@@ -14,17 +14,11 @@
         <Literal>
           <ID>item</ID>
           <ToolTip>サポートしないアイテムの説明</ToolTip>
-          <Default>This item</Default>
-        </Literal>
-        <Literal>
-          <ID>variable</ID>
-          <ToolTip>サポートしないアイテムの変数</ToolTip>
           <Default>item</Default>
         </Literal>
       </Declarations>
       <Code Language="csharp" Kind="method body">
-        <![CDATA[throw new NotSupportedException(
-                        string.Format("$item$ [{0}] is not supported", $variable$));]]>
+        <![CDATA[throw new NotSupportedException($$"The [{$item$}] is not supported.");]]>
       </Code>
     </Snippet>
   </CodeSnippet>
