@@ -38,7 +38,7 @@
                   if ($field$ != value)
                   {
                       $field$ = value;
-                      OnPropertyChanged(() => $propertyName$);
+                      OnPropertyChanged(nameof($propertyName$));
                   }
               }
           }]]>
